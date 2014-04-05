@@ -10,8 +10,8 @@ exports.createEvent = function(req, res) {
 	};
 
 	//create the event to the database, add the password as well
-	eventObj.guestUrl = "http://localhost:3000/"+eventObj.eventName;
-	eventObj.hostUrl = "http://localhost:3000/manage/"+eventObj.eventName;
+	eventObj.guestUrl = "http://pickkme.herokuapp.com:3000/"+eventObj.eventName;
+	eventObj.hostUrl = "http://pickkme.herokuapp.com:3000/manage/"+eventObj.eventName;
 
 
 

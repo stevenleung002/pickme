@@ -45,7 +45,7 @@
 
 
 				<div>
-			    <button type="button" data-toggle="modal" data-target="#myModal" 
+			    <button type="button" data-toggle="modal" data-target="#winnerModal" 
 			    class="btn btn-primary btn-lg btn-block"  type="raffle" onclick="generateWinner('{{eventName}}')">Get a Winner!</button>
 			    </div>
 
@@ -61,8 +61,12 @@
 					padding:30px; max-width: 800px; height:110px	" >
 
 				<div>
-			    <button type="button" class="btn btn-default btn-lg pull-right" type="raffle" style="width:100px; background-color:yellow"
-			    		onclick="">Share</button>
+
+
+			    <button type="button" class="btn btn-primary btn-lg pull-left" data-toggle="modal" data-target="#resetModal" style="margin:5px; background-color:green" type="raffle" onclick="resetWinner('{{eventName}}')">ResetWinner!</button>
+
+
+			    <button type="button" class="btn btn-default btn-lg pull-right" type="raffle" style="width:100px; background-color:yellow" onclick="">Share</button>
 			    </div>
 			    
 		 	</div>
@@ -75,7 +79,7 @@
 		
 		
 		<!-- Modal -->
-		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal fade" id="winnerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		  <div class="modal-dialog">
 		    <div class="modal-content">
 		      <div class="modal-header" align="center">
@@ -90,7 +94,21 @@
 		  </div>
 		</div>
 
+		<!-- Modal -->
+		<div class="modal fade" id="resetModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header" align="center">
+		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		      </div>
+		      <div class="modal-body" align="center">
 
+		      		<h3>Winner List Reset</h3>
+		      		<h3 id="resetoutput"></h3>
+		      </div>
+		    </div>
+		  </div>
+		</div>
 
 
 
@@ -132,7 +150,9 @@
 	    </div>
     </form>
 	-->
-	
+
+
+
 	<script src="/js/jquery-1.11.0.js"></script>
 	<script src="/js/hci-friends.js"></script>
 	<script src="/js/bootstrap.js"></script>
@@ -141,15 +161,29 @@
 
 		$.ajax({
   			type: "GET",
-			url: "/generateWinner/"+eventName,
-			success: function(data) {
-				//alert("success" +data.size);
-				document.getElementById("winnertext").innerHTML = data.size;
 
-
-
-				//display message back to user here
-			}		
+  				url: "/generateWinner/"+eventName,
+  				success: function(data) {
+  					if(data.status == "success"){
+  						document.getElementById("winnertext").innerHTML = data.phone;
+  					} else {document.getElementById("winnertext").innerHTML = data.msg;
+  					}
+  					//display message back to user here
+  				}
+		});
+	}
+	function resetWinner(eventName){
+		$.ajax({
+  			type: "GET",
+  				url: "/resetWinner/"+eventName,
+  				success: function(data) {
+  					if(data.status == "success"){
+  						document.getElementById("resetoutput").innerHTML = "success";
+  					} else {
+  						document.getElementById("resetoutput").innerHTML = data.msg;
+  					}
+  					//display message back to user here
+  				}
 		});
 	}
 

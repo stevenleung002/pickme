@@ -65,14 +65,23 @@
 
 			    <button type="button" class="btn btn-primary btn-lg pull-left" data-toggle="modal" data-target="#resetModal" style="margin:5px; background-color:green" type="raffle" onclick="resetWinner('{{eventName}}')">ResetWinner!</button>
 
-
-			    <button type="button" class="btn btn-default btn-lg pull-right" type="raffle" style="width:100px; background-color:yellow" onclick="">Share</button>
+			    <form action="/share/{{eventName}}" method="get">
+			  	 	 <button type="submit" class="btn btn-default btn-lg pull-right" type="raffle" style="width:100px; background-color:yellow">Share</button>
+				</form>
 			    </div>
 			    
 		 	</div>
 		</div>
 
 
+		<div class="container" align="center" style="padding-top:50px">
+			<div style="border: 1px solid rgb(200,200,200); background-color:rgba(255, 255, 255, 0.8); border-radius:15px; 
+					padding:15px; max-width: 800px; height:110px	" >
+
+				<h1>Host Return Link :<a href="{{host_url}}">{{host_url}}</a></h2>
+			    
+		 	</div>
+		</div>
 
 
 		
@@ -110,17 +119,6 @@
 		  </div>
 		</div>
 
-
-
-		<div class="col-md-8">
-			<h1>Scan QR Code to enter raffle!</h1>
-
-			<div display="block">
-				<div class="qrcode">
-				<img class="img-responsive img-rounded" width="150px" height="150px" src="http://www.qrstuff.com/images/sample.png" clear="both" display="block" title="" />
-				</div>
-			</div>
-		</div>
 
 
 	<!--{{#each friends}}

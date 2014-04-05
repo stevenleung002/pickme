@@ -55,6 +55,7 @@ app.post('/createEvent', controller.createEvent);
 app.post('/enterRaffle', controller.enterRaffle);
 
 app.get('/generateWinner/:eventName', controller.generateWinner);
+app.get('/resetWinner/:eventName', controller.resetWinner);
 app.get('/:eventName', controller.guest);
 app.get('/manage/:eventName', hostops.view);
 http.createServer(app).listen(app.get('port'), function(){

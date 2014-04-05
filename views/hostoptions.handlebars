@@ -82,6 +82,7 @@
 	    </div>
 	-->
 	    <button type="button" class="btn btn-primary" style="margin:5px" type="raffle" onclick="generateWinner('{{eventName}}')">Get a Winner!</button>
+	    <button type="button" class="btn btn-primary" style="margin:5px" type="raffle" onclick="resetWinner('{{eventName}}')">ResetWinner!</button>
 	</form>
 	<script src="/js/jquery-1.11.0.js"></script>
 	<script src="/js/hci-friends.js"></script>
@@ -93,11 +94,28 @@
   			type: "GET",
   				url: "/generateWinner/"+eventName,
   				success: function(data) {
-  					alert("success" +data.size);
-
+  					if(data.status == "success"){
+  						alert("success" +data.phone);
+  					} else {
+  						alert(data.msg);
+  					}
   					//display message back to user here
-  		}
-});
+  				}
+		});
+	}
+	function resetWinner(eventName){
+		$.ajax({
+  			type: "GET",
+  				url: "/resetWinner/"+eventName,
+  				success: function(data) {
+  					if(data.status == "success"){
+  						alert("success");
+  					} else {
+  						alert(data.msg);
+  					}
+  					//display message back to user here
+  				}
+		});
 	}
 
 </script>

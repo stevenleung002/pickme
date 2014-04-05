@@ -5,14 +5,16 @@ exports.createEvent = function(req, res) {
 	var eventObj = {
 		"eventName": req.body.eventName,
 		"eventPassword": req.body.eventPassword,
-		"members": []		
+		"members": [],
+		"winners": []		
 	};
-
-	data.events.push(eventObj);
 
 	//create the event to the database, add the password as well
 	eventObj.guestUrl = "http://localhost:3000/"+eventObj.eventName;
 	eventObj.hostUrl = "http://localhost:3000/manage/"+eventObj.eventName;
+
+
+
 
 	var Bitly = require('bitly');
 	var bitly = new Bitly('o_5sfjrl9qot', 'R_66a5ac49dd544c928c143b4fa2179219');
@@ -40,6 +42,7 @@ exports.createEvent = function(req, res) {
 		  eventObj.user_url = user_url;
 		  eventObj.host_url = host_url;
 
+		  data.events.push(eventObj);
 		  res.render('hostoptions', eventObj);
 		});
 
@@ -73,41 +76,65 @@ exports.enterRaffle = function(req, res){
  	var num = {
  		"phone": number
  	}
-   var NumberOfEvents = data.events.length;
-	var index = 0;
-	for (var i=0;i<NumberOfEvents;i++)
+
+	for (var i=0;i<data.events.length;i++)
 	{
 		if(data.events[i].eventName == eventName)
 			break;
-		index++;
 	}
-    data["events"][index]["members"].push(num);
+    data["events"][i]["members"].push(num);
 	res.render('complete', num);
-}
-exports.checkIfPhoneExist = function(req, res){
-
-	res.json(200,{status: "success"});
 }
 
 exports.generateWinner = function(req, res){
-	var obj = {eventName : req.params.eventName};
+	var obj= {eventName : req.params.eventName}; 
 	var Name = obj.eventName;
 	//generate a winner
 
-	var NumberOfEvents = data.events.length;
-	console.log("Number of events = "+ NumberOfEvents);
-
-	var index = 0;
-	for (var i=0;i<NumberOfEvents;i++)
+	for (var i=0;i<data.events.length;i++)
 	{
 		console.log("Compare  "+ Name + " with "+data.events[i].eventName);
 		if(data.events[i].eventName == Name)
 			break;
-		index++;
 	}
-	console.log("index =" +index);
-	var temp = data.events[index].members.length;
-	var randomnumber = Math.floor((Math.random()*temp));
-	console.log("random number "+ randomnumber);
-	res.json(200,{size:data.events[index].members[randomnumber].phone});
+	var temp = data.events[i].members.length;
+	console.log("temp : " + temp + ", len : " + data.events[i].members.length);
+	if(temp > 0 ){
+		var randomnumber = Math.floor((Math.random()*temp));
+		console.log("random number "+ randomnumber);
+
+		//move the select element from the pool to the winners list
+		var phoneNum = data.events[i].members[randomnumber].phone;
+		data.events[i].winners.push(data.events[i].members[randomnumber]);//add it to the winner
+		data.events[i].members.splice(randomnumber, 1);//remove it from the array
+
+		res.json(200,
+				{
+					status: "success",
+					phone: phoneNum
+				});		
+	}
+
+	else {
+		res.json(200,{status:"fail",
+					  msg: "No more winners!"});
+	}	
+}
+
+
+exports.resetWinner = function(req,res){
+	var obj= {eventName : req.params.eventName}; 	
+	var Name = obj.eventName;
+	//generate a winner
+
+	for (var i=0;i<data.events.length;i++)
+	{
+		console.log("Compare  "+ Name + " with "+data.events[i].eventName);
+		if(data.events[i].eventName == Name)
+			break;
+	}
+	data.events[i].members = data.events[i].members.concat(data.events[i].winners);
+	data.events[i].winners = [];
+
+	res.json(200, {status: "success"});
 }

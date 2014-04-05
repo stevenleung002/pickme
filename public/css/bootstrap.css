@@ -7124,3 +7124,9 @@ body {
        -moz-background-size: cover;
          -o-background-size: cover;
 }
+
+
+#qrcode {
+  height:100px;
+  margin-top:15px;
+}

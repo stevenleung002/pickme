@@ -1,0 +1,42 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <title>Completed</title> 
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/bootstrap.css"/>  
+</head>
+
+<body>
+
+
+	<div class="container" align="center" style="padding-top:50px">
+		<div style="border: 1px solid rgb(200,200,200); background-color:rgba(255, 255, 255, 0.8); border-radius:15px; 
+				padding:5px; max-width: 550px; min-height: 500px; " >
+	 		<h1 style="margin-bottom: 20px">{{eventName}}</h1>
+	 		<h2 style="margin-bottom: 20px"><a href="{{user_url}}">{{user_url}}</a></h2>
+
+
+
+			<input id="text" type="hidden" value="{{user_url}}" style="width:80%" /><br />
+			<div id="qrcode"></div>
+
+
+
+
+
+
+	 	</div>
+	</div>
+	<script src="/js/jquery-1.11.0.js"></script>
+	<script src="/js/actions.js"></script>
+	<script src="/js/qrcode.js"></script>
+	<script src="/js/qr.js"></script>
+	
+	<script src="/js/hci-friends.js"></script>
+	<script src="/js/bootstrap.js"></script>
+
+</body>
+</html>

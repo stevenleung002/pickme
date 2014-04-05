@@ -13,6 +13,7 @@ var index = require('./routes/index');
 var add = require('./routes/add.js');
 var controller = require('./routes/controller.js');
 var hostops = require('./routes/hostoptions');
+var share = require('./routes/share');
 // Example route
 // var user = require('./routes/user');
 
@@ -47,7 +48,7 @@ app.get('/', index.view);
 // app.get('/users', user.list);
 
 app.get('/hostoptions',hostops.view);
-
+app.get('/share/:eventName', share.view);
 
 app.post('/add', add.addPhoneNumber);
 app.post('/consolePrint', add.outputDatabase);
@@ -58,6 +59,7 @@ app.get('/generateWinner/:eventName', controller.generateWinner);
 app.get('/resetWinner/:eventName', controller.resetWinner);
 app.get('/:eventName', controller.guest);
 app.get('/manage/:eventName', hostops.view);
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });

@@ -47,3 +47,13 @@ exports.checkIfPhoneExist = function(req, res){
 
 	res.json(200,{status: "success"});
 }
+
+exports.generateWinner = function(req, res){
+
+	//generate a winner
+	
+	var size = data.events[0].members.length;
+	var randomnumber = Math.floor((Math.random()*size)+1);
+	console.log("I am here"+ data.events[0].members[randomnumber].phone);
+	res.json(200,{size:data.events[0].members[randomnumber].phone});
+}

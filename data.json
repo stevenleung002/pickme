@@ -29,6 +29,12 @@
 			"name": "Allen Newell",
 			"description": "Really into psychology",
 			"imageURL": "http://www.nap.edu/html/biomems/photo/anewell.JPG"
+		},
+
+		{
+			"name": "Steven",
+			"description": "facebook hackthon",
+			"imageURL": "http://www.nap.edu/html/biomems/photo/anewell.JPG"
 		}
 	]
 }

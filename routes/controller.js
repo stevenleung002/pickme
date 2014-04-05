@@ -23,14 +23,14 @@ exports.createEvent = function(req, res) {
 	var host_url;
 
 
-	bitly.shorten('https://github.com/tanepiper/node-bitly', function(err, response) {
+	bitly.shorten(eventObj.guestUrl, function(err, response) {
 	  if (err) throw err;
 
 	  // See http://code.google.com/p/bitly-api/wiki/ApiDocumentation for format of returned object
 	  user_url = response.data.url;;
 	  // Do something with data
 
-		bitly.shorten('http://www.harrynetwork.com', function(err, response) {
+		bitly.shorten(eventObj.hostUrl, function(err, response) {
 		  if (err) throw err;
 
 		  // See http://code.google.com/p/bitly-api/wiki/ApiDocumentation for format of returned object

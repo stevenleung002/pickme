@@ -7,11 +7,12 @@ var express = require('express');
 var http = require('http');
 var path = require('path');
 
-var hostops = require('./routes/hostoptions');
 var handlebars = require('express3-handlebars')
 
 var index = require('./routes/index');
 var add = require('./routes/add.js');
+var controller = require('./routes/controller.js');
+var hostops = require('./routes/hostoptions');
 // Example route
 // var user = require('./routes/user');
 
@@ -38,11 +39,23 @@ if ('development' == app.get('env')) {
 }
 
 // Add routes here
+app.get('/create', function(req, res) {
+	res.render('create');
+})
 app.get('/', index.view);
 // Example route
 // app.get('/users', user.list);
-app.get('/add', add.addFriend);
+
 app.get('/hostoptions',hostops.view);
+
+
+app.post('/add', add.addPhoneNumber);
+app.post('/consolePrint', add.outputDatabase);
+app.post('/createEvent', controller.createEvent);
+app.post('/enterRaffle', controller.enterRaffle);
+
+app.get('/:eventName', controller.guest);
+app.get('/manage/:eventName', controller.host);
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });

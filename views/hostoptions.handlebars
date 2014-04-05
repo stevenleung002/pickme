@@ -18,22 +18,29 @@
 
 <body>
 	<div class="container">
-	<h1>Event</h1>
 
-	{{#each friends}}
-		<div class="friends" id="{{name}}">
-			<a href="#"><h3>{{name}}</h3></a>
-			<p>{{phone}}</p>
-			<hr><hr>
+		<div class="col-md-4">
+
+			<h1>Event</h1>
+			<p>here goes the bitly</p>
+			{{#each friends}}
+				<div class="friends" id="{{name}}">
+					<a href="#"><h3>{{name}}</h3></a>
+					<p>{{phone}}</p>
+					<hr><hr>
+				</div>
+			{{/each}}
 		</div>
-	{{/each}}
 
-	<div class="qrcode">
-	<img class="img-responsive img-rounded" src="http://www.qrstuff.com/images/sample.png"/>
-	<h3>Options</h3>
-	<p>some options</p>
-	</div>
-	
+		<div class="col-md-8">
+			<h1>Scan QR Code to enter raffle!</h1>
+
+			<div display="block">
+				<div class="qrcode">
+				<img class="img-responsive img-rounded" width="150px" height="150px" src="http://www.qrstuff.com/images/sample.png" clear="both" display="block" title="" />
+				</div>
+			</div>
+		</div>
 	<!--{{#each friends}}
 		<div class="friends" id="{{name}}">
 			<a href="#"><h3>{{name}}</h3></a>

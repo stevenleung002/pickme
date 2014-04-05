@@ -37,8 +37,11 @@ exports.enterRaffle = function(req, res){
 	console.log(number);
 	console.log(eventName);
 
+ 	var num = {
+ 		"phone": number
+ 	}
 
-	res.render('complete');
+	res.render('complete', num);
 }
 exports.checkIfPhoneExist = function(req, res){
 

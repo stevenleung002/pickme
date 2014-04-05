@@ -6,6 +6,8 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
+
+var hostops = require('./routes/hostoptions');
 var handlebars = require('express3-handlebars')
 
 var index = require('./routes/index');
@@ -40,7 +42,7 @@ app.get('/', index.view);
 // Example route
 // app.get('/users', user.list);
 app.get('/add', add.addFriend);
-
+app.get('/hostoptions',hostops.view);
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });

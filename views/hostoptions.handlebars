@@ -19,32 +19,80 @@
 <body>
 	<div class="container">
 
- <a href="{{guestUrl}}">{{guestUrl}}</a>
- <a href="{{hostUrl}}">{{hostUrl}}</a>
-		
-<div class="container" align="center" style="padding-top:50px">
-	<div style="border: 1px solid rgb(200,200,200); background-color:rgba(255, 255, 255, 0.8); border-radius:15px; 
-			padding:5px; max-width: 800px;" >
- 		<h1 style="margin-bottom: 20px">Guest: <a href="{{user_url}}">{{user_url}}</a></h1>
- 		<h1 style="margin-bottom: 20px">Host: <a href="{{host_url}}">{{host_url}}</a></h2>
- 	</div>
-</div>
+		 <a href="{{guestUrl}}">{{guestUrl}}</a>
+		 <a href="{{hostUrl}}">{{hostUrl}}</a>
 
-
-
-
-		<div class="col-md-4">
-
-			<h1>Event</h1>
-			<p>here goes the bitly</p>
-			{{#each friends}}
-				<div class="friends" id="{{name}}">
-					<a href="#"><h3>{{name}}</h3></a>
-					<p>{{phone}}</p>
-					<hr><hr>
-				</div>
-			{{/each}}
+		<!--	
+		<div class="container" align="center" style="padding-top:50px">
+			<div style="border: 1px solid rgb(200,200,200); background-color:rgba(255, 255, 255, 0.8); border-radius:15px; 
+					padding:5px; max-width: 800px;" >
+		 		<h1 style="margin-bottom: 20px">Guest: <a href="{{user_url}}">{{user_url}}</a></h1>
+		 		<h1 style="margin-bottom: 20px">Host: <a href="{{host_url}}">{{host_url}}</a></h2>
+		 	</div>
 		</div>
+		-->
+
+		<div class="container" align="center" style="padding-top:50px">
+			<div style="border: 1px solid rgb(200,200,200); background-color:rgba(255, 255, 255, 0.8); border-radius:15px; 
+					padding:30px; max-width: 800px;" >
+
+				<!--
+				<div>
+			    <button type="button" class="btn btn-primary btn-lg btn-block"  type="raffle" 
+			    		onclick="generateWinner('{{eventName}}')">Get a Winner!</button>
+			    </div>
+				-->
+
+
+				<div>
+			    <button type="button" data-toggle="modal" data-target="#myModal" 
+			    class="btn btn-primary btn-lg btn-block"  type="raffle" onclick="generateWinner('{{eventName}}')">Get a Winner!</button>
+			    </div>
+
+
+
+
+		 	</div>
+		</div>
+
+
+		<div class="container" align="center" style="padding-top:50px">
+			<div style="border: 1px solid rgb(200,200,200); background-color:rgba(255, 255, 255, 0.8); border-radius:15px; 
+					padding:30px; max-width: 800px; height:110px	" >
+
+				<div>
+			    <button type="button" class="btn btn-default btn-lg pull-right" type="raffle" style="width:100px; background-color:yellow"
+			    		onclick="">Share</button>
+			    </div>
+			    
+		 	</div>
+		</div>
+
+
+
+
+		
+		
+		
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header" align="center">
+		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		        <h2 class="modal-title" id="myModalLabel">The Winner</h4>
+		      </div>
+		      <div class="modal-body" align="center">
+		      		<h1 id="winnertext"></h1>
+		      		<h3>Congratulations!!</h3>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
+
+
+
 
 		<div class="col-md-8">
 			<h1>Scan QR Code to enter raffle!</h1>
@@ -55,6 +103,8 @@
 				</div>
 			</div>
 		</div>
+
+
 	<!--{{#each friends}}
 		<div class="friends" id="{{name}}">
 			<a href="#"><h3>{{name}}</h3></a>
@@ -80,9 +130,9 @@
 	      <label for="phone">Phone:</label>
 	      <input type="text" class="form-control" id="phone" placeholder="Phone" name="phone">
 	    </div>
+    </form>
 	-->
-	    <button type="button" class="btn btn-primary" style="margin:5px" type="raffle" onclick="generateWinner('{{eventName}}')">Get a Winner!</button>
-	</form>
+	
 	<script src="/js/jquery-1.11.0.js"></script>
 	<script src="/js/hci-friends.js"></script>
 	<script src="/js/bootstrap.js"></script>
@@ -91,13 +141,16 @@
 
 		$.ajax({
   			type: "GET",
-  				url: "/generateWinner/"+eventName,
-  				success: function(data) {
-  					alert("success" +data.size);
+			url: "/generateWinner/"+eventName,
+			success: function(data) {
+				//alert("success" +data.size);
+				document.getElementById("winnertext").innerHTML = data.size;
 
-  					//display message back to user here
-  		}
-});
+
+
+				//display message back to user here
+			}		
+		});
 	}
 
 </script>

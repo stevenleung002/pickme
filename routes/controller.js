@@ -73,7 +73,15 @@ exports.enterRaffle = function(req, res){
  	var num = {
  		"phone": number
  	}
-
+   var NumberOfEvents = data.events.length;
+	var index = 0;
+	for (var i=0;i<NumberOfEvents;i++)
+	{
+		if(data.events[i].eventName == eventName)
+			break;
+		index++;
+	}
+    data["events"][index]["members"].push(num);
 	res.render('complete', num);
 }
 exports.checkIfPhoneExist = function(req, res){
@@ -82,11 +90,24 @@ exports.checkIfPhoneExist = function(req, res){
 }
 
 exports.generateWinner = function(req, res){
-
+	var obj = {eventName : req.params.eventName};
+	var Name = obj.eventName;
 	//generate a winner
-	
-	var size = data.events[0].members.length;
-	var randomnumber = Math.floor((Math.random()*size)+1);
-	console.log("I am here"+ data.events[0].members[randomnumber].phone);
-	res.json(200,{size:data.events[0].members[randomnumber].phone});
+
+	var NumberOfEvents = data.events.length;
+	console.log("Number of events = "+ NumberOfEvents);
+
+	var index = 0;
+	for (var i=0;i<NumberOfEvents;i++)
+	{
+		console.log("Compare  "+ Name + " with "+data.events[i].eventName);
+		if(data.events[i].eventName == Name)
+			break;
+		index++;
+	}
+	console.log("index =" +index);
+	var temp = data.events[index].members.length;
+	var randomnumber = Math.floor((Math.random()*temp)+1);
+	console.log("random number "+ randomnumber);
+	res.json(200,{size:data.events[index].members[randomnumber].phone});
 }

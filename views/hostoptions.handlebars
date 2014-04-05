@@ -5,9 +5,9 @@
 	<title>Event</title>	
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="css/bootstrap.css"/>
-	<link rel="stylesheet" href="css/bootstrap.css"/>
-	<link rel="stylesheet" href="css/hci-friends.css"/>
+	<link rel="stylesheet" href="/css/bootstrap.css"/>
+	<link rel="stylesheet" href="/css/bootstrap.css"/>
+	<link rel="stylesheet" href="/css/hci-friends.css"/>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -67,17 +67,17 @@
 	      <input type="text" class="form-control" id="phone" placeholder="Phone" name="phone">
 	    </div>
 	-->
-	    <button type="button" onclick="generateWinner()">Get a Winner!</button>
+	    <button type="button" onclick="generateWinner('{{eventName}}')">Get a Winner!</button>
 	</form>
-	<script src="js/jquery-1.11.0.js"></script>
-	<script src="js/hci-friends.js"></script>
-	<script src="js/bootstrap.js"></script>
+	<script src="/js/jquery-1.11.0.js"></script>
+	<script src="/js/hci-friends.js"></script>
+	<script src="/js/bootstrap.js"></script>
 	<script type="text/javascript">
-	function generateWinner (){
-		//alert("helloworld");
+	function generateWinner (eventName){
+
 		$.ajax({
   			type: "GET",
-  				url: "generateWinner",
+  				url: "/generateWinner/"+eventName,
   				success: function(data) {
   					alert("success" +data.size);
 

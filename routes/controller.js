@@ -40,7 +40,7 @@ exports.createEvent = function(req, res) {
 		  eventObj.user_url = user_url;
 		  eventObj.host_url = host_url;
 
-		  res.render('confirmation', eventObj);
+		  res.render('hostoptions', eventObj);
 		});
 
 	});
@@ -107,7 +107,7 @@ exports.generateWinner = function(req, res){
 	}
 	console.log("index =" +index);
 	var temp = data.events[index].members.length;
-	var randomnumber = Math.floor((Math.random()*temp)+1);
+	var randomnumber = Math.floor((Math.random()*temp));
 	console.log("random number "+ randomnumber);
 	res.json(200,{size:data.events[index].members[randomnumber].phone});
 }

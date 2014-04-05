@@ -1,34 +1,47 @@
 {
 	"friends": [
 		{
-			"name": "Doug Engelbart",
+			"name": "Fabian Engelbart",
 			"description": "Has awesome pet mice",
+			"phone": "123456",
 			"imageURL": "http://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Douglas_Engelbart_in_2008.jpg/972px-Douglas_Engelbart_in_2008.jpg"			
 		},
 		{
 			"name": "Ivan Sutherland",
 			"description": "Great at sketching",
+			"phone": "4567897",
 			"imageURL": "http://upload.wikimedia.org/wikipedia/commons/5/5c/Ivan_Sutherland_at_CHM.jpg"			
 		},
 		{
 			"name": "Lucy Suchman",
 			"description": "Loves Trukese navigators",
+			"phone": "098765",
 			"imageURL": "http://upload.wikimedia.org/wikipedia/commons/d/df/Lucy_Suchman.jpeg"			
 		},
 		{
 			"name": "Vannevar Bush",
 			"description": "Has stellar associative memory",
+			"phone": "976541",
 			"imageURL": "http://upload.wikimedia.org/wikipedia/commons/e/ea/Vannevar_Bush_portrait.jpg"			
 		},
 		{
 			"name": "Grace Hopper",
 			"description": "Only friend with a Navy ship named after them",
+			"phone": "3452454",
 			"imageURL": "http://www.personal.psu.edu/djd5202/gHop.jpg"
 		},
 		{
 			"name": "Allen Newell",
 			"description": "Really into psychology",
+			"phone": "53539753",
 			"imageURL": "http://www.nap.edu/html/biomems/photo/anewell.JPG"
+		}
+	],
+	"phonenums": [
+		{
+			"Allen": "6789987",
+			"Grace": "2345676",
+			"Vannevar": "1234567"
 		}
 	]
 }

@@ -22,7 +22,7 @@
 	<div class="friends">
 	<img class="img-responsive img-rounded" src="http://lorempixel.com/500/500/people"/>
 	<h3>Fake friend</h3>
-	<p> All my friends are imagination</p>
+	<p> All my friends are imaginary</p>
 	</div>
 	
 	{{#each friends}}
@@ -30,7 +30,8 @@
 			<a href="#"><h3>{{name}}</h3></a>
 			<img class="img-responsive img-rounded" src="{{imageURL}}"/>
 			<p>{{description}}</p>
-			<hr>
+			<p>{{phone}}</p>
+			<hr><hr>
 		</div>
 	{{/each}}
 	
@@ -41,8 +42,13 @@
 	      <input type="text" class="form-control" id="name" placeholder="Name" name="name">
 	    </div>
 	    <div class="form-group">
-	      <label for="description">Description:</label>
+	      <label for="description">descriptioncription:</label>
 	      <input type="text" class="form-control" id="description" placeholder="Description" name="description">
+	    </div>
+		
+		<div class="form-group">
+	      <label for="phone">Phone:</label>
+	      <input type="text" class="form-control" id="phone" placeholder="Phone" name="phone">
 	    </div>
 	    <input type="submit" id="submitBtn" class="btn btn-default" value="Add the friend"></input>
 	</form>

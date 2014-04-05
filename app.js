@@ -54,6 +54,7 @@ app.post('/consolePrint', add.outputDatabase);
 app.post('/createEvent', controller.createEvent);
 app.post('/enterRaffle', controller.enterRaffle);
 
+app.get('/generateWinner', controller.generateWinner);
 app.get('/:eventName', controller.guest);
 app.get('/manage/:eventName', controller.host);
 http.createServer(app).listen(app.get('port'), function(){

@@ -67,14 +67,31 @@
 	      <input type="text" class="form-control" id="phone" placeholder="Phone" name="phone">
 	    </div>
 	-->
-	    <input type="submit" id="raffleBtn" class="btn btn-default" value="Raffle!"></input>
+	    <button type="button" onclick="generateWinner()">Get a Winner!</button>
 	</form>
 	<script src="js/jquery-1.11.0.js"></script>
 	<script src="js/hci-friends.js"></script>
 	<script src="js/bootstrap.js"></script>
+	<script type="text/javascript">
+	function generateWinner (){
+		//alert("helloworld");
+		$.ajax({
+  			type: "GET",
+  				url: "generateWinner",
+  				success: function(data) {
+  					alert("success" +data.size);
+
+  					//display message back to user here
+  		}
+});
+	}
+
+</script>
 	</div>
 
 
 	
 </body>
 </html>
+
+

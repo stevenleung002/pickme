@@ -17,8 +17,6 @@ exports.addPhoneNumber = function(req, res) {
 	var newPhoneNumber = {
 		"id" : "0",
 		"number" : req.body.phoneNumber
-
-
 	};
 	console.log(newPhoneNumber);
 	data["phoneNumbers"].push(newPhoneNumber);

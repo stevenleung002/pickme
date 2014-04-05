@@ -37,15 +37,21 @@ if ('development' == app.get('env')) {
 }
 
 // Add routes here
+app.get('/create', function(req, res) {
+	res.render('create');
+})
 app.get('/', index.view);
 // Example route
 // app.get('/users', user.list);
+
+
 app.post('/add', add.addPhoneNumber);
 app.post('/consolePrint', add.outputDatabase);
-app.get('/createEvent', controller.createEvent);
-app.get('/event/:eventName', controller.guest);
-app.get('/event/manage/:eventName', controller.host);
+app.post('/createEvent', controller.createEvent);
+app.post('/enterRaffle', controller.enterRaffle);
 
+app.get('/:eventName', controller.guest);
+app.get('/manage/:eventName', controller.host);
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });

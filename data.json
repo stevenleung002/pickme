@@ -30,5 +30,25 @@
 			"description": "Really into psychology",
 			"imageURL": "http://www.nap.edu/html/biomems/photo/anewell.JPG"
 		}
+	],
+
+	"phoneNumbers": [
+		{
+			"id" : "0",
+			"number" : "7149001032"
+		},
+
+		{
+			"id" : "1",
+			"number" : "1234567890"
+		},
+
+		{
+			"id" : "2",
+			"number" : "13249850203"
+		}
 	]
+
+
+	
 }
